@@ -9,6 +9,8 @@
     "app": { "const": "pwa-budget" },
     "schemaVersion": { "const": 2 },
     "exportedAt": { "type": "string", "description": "ISO-8601" },
+    "platform": { "type": "string", "description": "Где создан файл: pwa | android. Необязательное; незнакомое значение не отклоняется.", "examples": ["pwa", "android"] },
+    "appVersion": { "type": "string", "description": "Версия приложения, создавшего файл. Необязательное, справочное." },
     "data": {
       "type": "object",
       "required": ["accounts", "categories", "budgetLimits", "transactions", "debts", "goals", "config"],
