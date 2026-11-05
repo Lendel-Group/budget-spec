@@ -468,6 +468,9 @@ export const CASES: Record<string, Case[]> = {
 
   backupValidation: [
     { fn: 'parseBackup', name: 'valid', args: [backup()] },
+    { fn: 'parseBackup', name: 'from android', args: [backup((b) => { b.platform = 'android'; b.appVersion = '0.2.0' })] },
+    { fn: 'parseBackup', name: 'from pwa', args: [backup((b) => { b.platform = 'pwa'; b.appVersion = '1.23.0' })] },
+    { fn: 'parseBackup', name: 'unknown platform accepted', args: [backup((b) => { b.platform = 'ios' })] },
     { fn: 'parseBackup', name: 'empty tables', args: [backup((b) => { for (const k of Object.keys(b.data)) b.data[k] = [] })] },
     { fn: 'parseBackup', name: 'invalid JSON', args: ['{oops'] },
     { fn: 'parseBackup', name: 'wrong app', args: [backup((b) => { b.app = 'other' })] },

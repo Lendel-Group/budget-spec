@@ -1,6 +1,6 @@
 {
   "module": "planning",
-  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "generatedFrom": "PWA-Budget@ba4997e (v1.23.0)",
   "cases": [
     {
       "fn": "daysBetween",
