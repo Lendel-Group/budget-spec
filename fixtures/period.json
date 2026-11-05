@@ -1,0 +1,287 @@
+{
+  "module": "period",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "addMonths",
+      "name": "+1 over year",
+      "args": [
+        {
+          "year": 2026,
+          "month": 12
+        },
+        1
+      ],
+      "expected": {
+        "year": 2027,
+        "month": 1
+      }
+    },
+    {
+      "fn": "addMonths",
+      "name": "-1 over year",
+      "args": [
+        {
+          "year": 2026,
+          "month": 1
+        },
+        -1
+      ],
+      "expected": {
+        "year": 2025,
+        "month": 12
+      }
+    },
+    {
+      "fn": "addMonths",
+      "name": "+12",
+      "args": [
+        {
+          "year": 2026,
+          "month": 11
+        },
+        12
+      ],
+      "expected": {
+        "year": 2027,
+        "month": 11
+      }
+    },
+    {
+      "fn": "addMonths",
+      "name": "-25",
+      "args": [
+        {
+          "year": 2026,
+          "month": 3
+        },
+        -25
+      ],
+      "expected": {
+        "year": 2024,
+        "month": 2
+      }
+    },
+    {
+      "fn": "sameMonth",
+      "name": "same",
+      "args": [
+        {
+          "year": 2026,
+          "month": 3
+        },
+        {
+          "year": 2026,
+          "month": 3
+        }
+      ],
+      "expected": true
+    },
+    {
+      "fn": "sameMonth",
+      "name": "different year",
+      "args": [
+        {
+          "year": 2026,
+          "month": 3
+        },
+        {
+          "year": 2025,
+          "month": 3
+        }
+      ],
+      "expected": false
+    },
+    {
+      "fn": "earliestMonth",
+      "name": "mixed with undefined",
+      "args": [
+        [
+          "2026-11-05",
+          {
+            "$undefined": true
+          },
+          "2025-12-31",
+          "2026-01-01"
+        ]
+      ],
+      "expected": {
+        "year": 2025,
+        "month": 12
+      }
+    },
+    {
+      "fn": "earliestMonth",
+      "name": "empty",
+      "args": [
+        []
+      ],
+      "expected": null
+    },
+    {
+      "fn": "monthBounds",
+      "name": "earliest in past, 12 ahead",
+      "args": [
+        {
+          "year": 2026,
+          "month": 11
+        },
+        {
+          "year": 2025,
+          "month": 6
+        },
+        12
+      ],
+      "expected": {
+        "min": {
+          "year": 2025,
+          "month": 6
+        },
+        "max": {
+          "year": 2027,
+          "month": 11
+        }
+      }
+    },
+    {
+      "fn": "monthBounds",
+      "name": "no data",
+      "args": [
+        {
+          "year": 2026,
+          "month": 11
+        },
+        null,
+        0
+      ],
+      "expected": {
+        "min": {
+          "year": 2026,
+          "month": 11
+        },
+        "max": {
+          "year": 2026,
+          "month": 11
+        }
+      }
+    },
+    {
+      "fn": "monthBounds",
+      "name": "earliest in future clamps to current",
+      "args": [
+        {
+          "year": 2026,
+          "month": 11
+        },
+        {
+          "year": 2027,
+          "month": 2
+        },
+        0
+      ],
+      "expected": {
+        "min": {
+          "year": 2026,
+          "month": 11
+        },
+        "max": {
+          "year": 2026,
+          "month": 11
+        }
+      }
+    },
+    {
+      "fn": "yearBounds",
+      "name": "with data",
+      "args": [
+        2026,
+        {
+          "year": 2024,
+          "month": 5
+        }
+      ],
+      "expected": {
+        "min": 2024,
+        "max": 2026
+      }
+    },
+    {
+      "fn": "yearBounds",
+      "name": "no data",
+      "args": [
+        2026,
+        null
+      ],
+      "expected": {
+        "min": 2026,
+        "max": 2026
+      }
+    },
+    {
+      "fn": "canStepMonth",
+      "name": "back allowed",
+      "args": [
+        {
+          "year": 2026,
+          "month": 11
+        },
+        -1,
+        {
+          "min": {
+            "year": 2026,
+            "month": 1
+          },
+          "max": {
+            "year": 2027,
+            "month": 11
+          }
+        }
+      ],
+      "expected": true
+    },
+    {
+      "fn": "canStepMonth",
+      "name": "back at min",
+      "args": [
+        {
+          "year": 2026,
+          "month": 1
+        },
+        -1,
+        {
+          "min": {
+            "year": 2026,
+            "month": 1
+          },
+          "max": {
+            "year": 2027,
+            "month": 11
+          }
+        }
+      ],
+      "expected": false
+    },
+    {
+      "fn": "canStepMonth",
+      "name": "forward at max",
+      "args": [
+        {
+          "year": 2027,
+          "month": 11
+        },
+        1,
+        {
+          "min": {
+            "year": 2026,
+            "month": 1
+          },
+          "max": {
+            "year": 2027,
+            "month": 11
+          }
+        }
+      ],
+      "expected": false
+    }
+  ]
+}

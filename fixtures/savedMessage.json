@@ -1,0 +1,58 @@
+{
+  "module": "savedMessage",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "savedMessage",
+      "name": "expense",
+      "args": [
+        {
+          "type": "expense",
+          "amount": 5000
+        },
+        "KZT",
+        false
+      ],
+      "expected": "Расход 5 000 ₸ сохранён"
+    },
+    {
+      "fn": "savedMessage",
+      "name": "income USD",
+      "args": [
+        {
+          "type": "income",
+          "amount": 12.5
+        },
+        "USD",
+        false
+      ],
+      "expected": "Доход 12,50 $ сохранён"
+    },
+    {
+      "fn": "savedMessage",
+      "name": "transfer",
+      "args": [
+        {
+          "type": "transfer",
+          "amount": 1000
+        },
+        "KZT",
+        false
+      ],
+      "expected": "Перевод 1 000 ₸ выполнен"
+    },
+    {
+      "fn": "savedMessage",
+      "name": "edited",
+      "args": [
+        {
+          "type": "expense",
+          "amount": 1
+        },
+        "KZT",
+        true
+      ],
+      "expected": "Изменения сохранены"
+    }
+  ]
+}

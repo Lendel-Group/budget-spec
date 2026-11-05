@@ -1,0 +1,138 @@
+{
+  "module": "onboarding",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "onboardingSteps",
+      "name": "fresh install",
+      "args": [
+        {
+          "accounts": [
+            {
+              "initialBalance": 0
+            }
+          ],
+          "limitsCount": 0,
+          "transactionsCount": 0
+        }
+      ],
+      "expected": [
+        {
+          "id": "account",
+          "done": false
+        },
+        {
+          "id": "limits",
+          "done": false
+        },
+        {
+          "id": "transaction",
+          "done": false
+        }
+      ]
+    },
+    {
+      "fn": "onboardingSteps",
+      "name": "balance set",
+      "args": [
+        {
+          "accounts": [
+            {
+              "initialBalance": 1000
+            }
+          ],
+          "limitsCount": 2,
+          "transactionsCount": 0
+        }
+      ],
+      "expected": [
+        {
+          "id": "account",
+          "done": true
+        },
+        {
+          "id": "limits",
+          "done": true
+        },
+        {
+          "id": "transaction",
+          "done": false
+        }
+      ]
+    },
+    {
+      "fn": "onboardingSteps",
+      "name": "second account",
+      "args": [
+        {
+          "accounts": [
+            {
+              "initialBalance": 0
+            },
+            {
+              "initialBalance": 0
+            }
+          ],
+          "limitsCount": 0,
+          "transactionsCount": 3
+        }
+      ],
+      "expected": [
+        {
+          "id": "account",
+          "done": true
+        },
+        {
+          "id": "limits",
+          "done": false
+        },
+        {
+          "id": "transaction",
+          "done": true
+        }
+      ]
+    },
+    {
+      "fn": "isOnboardingComplete",
+      "name": "all done",
+      "args": [
+        [
+          {
+            "id": "account",
+            "done": true
+          },
+          {
+            "id": "limits",
+            "done": true
+          },
+          {
+            "id": "transaction",
+            "done": true
+          }
+        ]
+      ],
+      "expected": true
+    },
+    {
+      "fn": "isOnboardingComplete",
+      "name": "not done",
+      "args": [
+        [
+          {
+            "id": "account",
+            "done": true
+          },
+          {
+            "id": "limits",
+            "done": false
+          },
+          {
+            "id": "transaction",
+            "done": true
+          }
+        ]
+      ],
+      "expected": false
+    }
+  ]
+}

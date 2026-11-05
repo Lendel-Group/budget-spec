@@ -1,0 +1,351 @@
+{
+  "module": "format",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "formatNumber",
+      "name": "integer thousands",
+      "args": [
+        5000
+      ],
+      "expected": "5 000"
+    },
+    {
+      "fn": "formatNumber",
+      "name": "millions",
+      "args": [
+        1234567
+      ],
+      "expected": "1 234 567"
+    },
+    {
+      "fn": "formatNumber",
+      "name": "fraction",
+      "args": [
+        12.5
+      ],
+      "expected": "12,50"
+    },
+    {
+      "fn": "formatNumber",
+      "name": "fraction 2 digits",
+      "args": [
+        1234.56
+      ],
+      "expected": "1 234,56"
+    },
+    {
+      "fn": "formatNumber",
+      "name": "negative",
+      "args": [
+        -2500
+      ],
+      "expected": "-2 500"
+    },
+    {
+      "fn": "formatNumber",
+      "name": "zero",
+      "args": [
+        0
+      ],
+      "expected": "0"
+    },
+    {
+      "fn": "formatNumber",
+      "name": "tiny fraction rounds",
+      "args": [
+        10.001
+      ],
+      "expected": "10,00"
+    },
+    {
+      "fn": "formatMoney",
+      "name": "KZT default",
+      "args": [
+        150000
+      ],
+      "expected": "150 000 ₸"
+    },
+    {
+      "fn": "formatMoney",
+      "name": "USD",
+      "args": [
+        12.5,
+        "USD"
+      ],
+      "expected": "12,50 $"
+    },
+    {
+      "fn": "formatMoney",
+      "name": "EUR",
+      "args": [
+        1000,
+        "EUR"
+      ],
+      "expected": "1 000 €"
+    },
+    {
+      "fn": "formatMoney",
+      "name": "RUB",
+      "args": [
+        99.99,
+        "RUB"
+      ],
+      "expected": "99,99 ₽"
+    },
+    {
+      "fn": "currencySymbol",
+      "name": "KZT",
+      "args": [
+        "KZT"
+      ],
+      "expected": "₸"
+    },
+    {
+      "fn": "currencySymbol",
+      "name": "USD",
+      "args": [
+        "USD"
+      ],
+      "expected": "$"
+    },
+    {
+      "fn": "currencySymbol",
+      "name": "EUR",
+      "args": [
+        "EUR"
+      ],
+      "expected": "€"
+    },
+    {
+      "fn": "currencySymbol",
+      "name": "RUB",
+      "args": [
+        "RUB"
+      ],
+      "expected": "₽"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "0",
+      "args": [
+        0,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дней"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "1",
+      "args": [
+        1,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "день"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "2",
+      "args": [
+        2,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дня"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "4",
+      "args": [
+        4,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дня"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "5",
+      "args": [
+        5,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дней"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "11",
+      "args": [
+        11,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дней"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "12",
+      "args": [
+        12,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дней"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "14",
+      "args": [
+        14,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дней"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "21",
+      "args": [
+        21,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "день"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "22",
+      "args": [
+        22,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дня"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "25",
+      "args": [
+        25,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дней"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "101",
+      "args": [
+        101,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "день"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "111",
+      "args": [
+        111,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дней"
+    },
+    {
+      "fn": "pluralRu",
+      "name": "1000",
+      "args": [
+        1000,
+        [
+          "день",
+          "дня",
+          "дней"
+        ]
+      ],
+      "expected": "дней"
+    },
+    {
+      "fn": "formatShare",
+      "name": "regular",
+      "args": [
+        0.374
+      ],
+      "expected": "37%"
+    },
+    {
+      "fn": "formatShare",
+      "name": "tiny",
+      "args": [
+        0.004
+      ],
+      "expected": "<1%"
+    },
+    {
+      "fn": "formatShare",
+      "name": "half percent",
+      "args": [
+        0.005
+      ],
+      "expected": "1%"
+    },
+    {
+      "fn": "formatShare",
+      "name": "zero",
+      "args": [
+        0
+      ],
+      "expected": "0%"
+    },
+    {
+      "fn": "formatShare",
+      "name": "full",
+      "args": [
+        1
+      ],
+      "expected": "100%"
+    }
+  ]
+}

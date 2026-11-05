@@ -1,0 +1,102 @@
+{
+  "module": "rates",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "parseRatesFile",
+      "name": "valid",
+      "args": [
+        {
+          "date": "2026-11-05",
+          "rates": {
+            "USD": 503.12,
+            "EUR": 560.4,
+            "RUB": 6.21,
+            "CNY": 70
+          }
+        }
+      ],
+      "expected": {
+        "date": "2026-11-05",
+        "rates": {
+          "USD": 503.12,
+          "EUR": 560.4,
+          "RUB": 6.21
+        }
+      }
+    },
+    {
+      "fn": "parseRatesFile",
+      "name": "partial",
+      "args": [
+        {
+          "date": "2026-11-05",
+          "rates": {
+            "USD": 503.12,
+            "EUR": "x",
+            "RUB": -1
+          }
+        }
+      ],
+      "expected": {
+        "date": "2026-11-05",
+        "rates": {
+          "USD": 503.12
+        }
+      }
+    },
+    {
+      "fn": "parseRatesFile",
+      "name": "no supported",
+      "args": [
+        {
+          "date": "2026-11-05",
+          "rates": {
+            "CNY": 70
+          }
+        }
+      ],
+      "expected": null
+    },
+    {
+      "fn": "parseRatesFile",
+      "name": "bad date",
+      "args": [
+        {
+          "date": "05.11.2026",
+          "rates": {
+            "USD": 500
+          }
+        }
+      ],
+      "expected": null
+    },
+    {
+      "fn": "parseRatesFile",
+      "name": "not object",
+      "args": [
+        "nope"
+      ],
+      "expected": null
+    },
+    {
+      "fn": "parseRatesFile",
+      "name": "null",
+      "args": [
+        null
+      ],
+      "expected": null
+    },
+    {
+      "fn": "parseRatesFile",
+      "name": "rates null",
+      "args": [
+        {
+          "date": "2026-11-05",
+          "rates": null
+        }
+      ],
+      "expected": null
+    }
+  ]
+}

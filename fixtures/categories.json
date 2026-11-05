@@ -1,0 +1,368 @@
+{
+  "module": "categories",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "sortCategoriesByUsage",
+      "name": "by frequency, stable for ties",
+      "args": [
+        [
+          {
+            "id": "a"
+          },
+          {
+            "id": "b"
+          },
+          {
+            "id": "c"
+          },
+          {
+            "id": "d"
+          }
+        ],
+        [
+          {
+            "categoryId": "c",
+            "date": "2026-11-05"
+          },
+          {
+            "categoryId": "c",
+            "date": "2026-10-01"
+          },
+          {
+            "categoryId": "b",
+            "date": "2026-11-01"
+          },
+          {
+            "categoryId": "d",
+            "date": "2026-08-01"
+          },
+          {
+            "categoryId": "d",
+            "date": "2026-08-02"
+          },
+          {
+            "categoryId": "d",
+            "date": "2026-08-03"
+          }
+        ],
+        "2026-11-05"
+      ],
+      "expected": [
+        {
+          "id": "c"
+        },
+        {
+          "id": "b"
+        },
+        {
+          "id": "a"
+        },
+        {
+          "id": "d"
+        }
+      ]
+    },
+    {
+      "fn": "sortCategoriesByUsage",
+      "name": "window boundary is inclusive (today − 90)",
+      "args": [
+        [
+          {
+            "id": "a"
+          },
+          {
+            "id": "b"
+          }
+        ],
+        [
+          {
+            "categoryId": "b",
+            "date": "2026-08-07"
+          }
+        ],
+        "2026-11-05"
+      ],
+      "expected": [
+        {
+          "id": "b"
+        },
+        {
+          "id": "a"
+        }
+      ]
+    },
+    {
+      "fn": "sortByDefaultOrder",
+      "name": "defaults first, then by order",
+      "args": [
+        [
+          {
+            "id": "cat-x",
+            "order": 2
+          },
+          {
+            "id": "cat-cafe"
+          },
+          {
+            "id": "cat-y",
+            "order": 1
+          },
+          {
+            "id": "cat-food"
+          },
+          {
+            "id": "cat-z"
+          }
+        ],
+        [
+          "cat-food",
+          "cat-cafe",
+          "cat-transport"
+        ]
+      ],
+      "expected": [
+        {
+          "id": "cat-food"
+        },
+        {
+          "id": "cat-cafe"
+        },
+        {
+          "id": "cat-z"
+        },
+        {
+          "id": "cat-y",
+          "order": 1
+        },
+        {
+          "id": "cat-x",
+          "order": 2
+        }
+      ]
+    },
+    {
+      "fn": "categoryFieldErrors",
+      "name": "valid",
+      "args": [
+        {
+          "name": "Подарки",
+          "type": "expense",
+          "icon": "Gift",
+          "color": "#EAB308"
+        },
+        [
+          {
+            "id": "cat-food",
+            "name": "Продукты",
+            "type": "expense",
+            "icon": "ShoppingCart",
+            "color": "#22c55e",
+            "isDefault": true
+          }
+        ]
+      ],
+      "expected": {}
+    },
+    {
+      "fn": "categoryFieldErrors",
+      "name": "empty everything",
+      "args": [
+        {
+          "name": " ",
+          "type": "expense",
+          "icon": "",
+          "color": "red"
+        },
+        []
+      ],
+      "expected": {
+        "name": "Укажите название категории",
+        "icon": "Выберите иконку",
+        "color": "Выберите цвет"
+      }
+    },
+    {
+      "fn": "categoryFieldErrors",
+      "name": "too long",
+      "args": [
+        {
+          "name": "ААААААААААААААААААААААААААААААА",
+          "type": "expense",
+          "icon": "Gift",
+          "color": "#eab308"
+        },
+        []
+      ],
+      "expected": {
+        "name": "Название не длиннее 30 символов"
+      }
+    },
+    {
+      "fn": "categoryFieldErrors",
+      "name": "30 chars ok",
+      "args": [
+        {
+          "name": "АААААААААААААААААААААААААААААА",
+          "type": "expense",
+          "icon": "Gift",
+          "color": "#eab308"
+        },
+        []
+      ],
+      "expected": {}
+    },
+    {
+      "fn": "categoryFieldErrors",
+      "name": "duplicate case-insensitive",
+      "args": [
+        {
+          "name": " продукты ",
+          "type": "expense",
+          "icon": "Gift",
+          "color": "#eab308"
+        },
+        [
+          {
+            "id": "cat-food",
+            "name": "Продукты",
+            "type": "expense",
+            "icon": "ShoppingCart",
+            "color": "#22c55e",
+            "isDefault": true
+          }
+        ]
+      ],
+      "expected": {
+        "name": "Категория с таким названием уже есть"
+      }
+    },
+    {
+      "fn": "categoryFieldErrors",
+      "name": "duplicate among hidden",
+      "args": [
+        {
+          "name": "Продукты",
+          "type": "expense",
+          "icon": "Gift",
+          "color": "#eab308"
+        },
+        [
+          {
+            "id": "cat-food",
+            "name": "Продукты",
+            "type": "expense",
+            "icon": "ShoppingCart",
+            "color": "#22c55e",
+            "isDefault": true,
+            "isArchived": true
+          }
+        ]
+      ],
+      "expected": {
+        "name": "Категория с таким названием есть среди скрытых"
+      }
+    },
+    {
+      "fn": "categoryFieldErrors",
+      "name": "same name other type ok",
+      "args": [
+        {
+          "name": "Продукты",
+          "type": "income",
+          "icon": "Gift",
+          "color": "#eab308"
+        },
+        [
+          {
+            "id": "cat-food",
+            "name": "Продукты",
+            "type": "expense",
+            "icon": "ShoppingCart",
+            "color": "#22c55e",
+            "isDefault": true
+          }
+        ]
+      ],
+      "expected": {}
+    },
+    {
+      "fn": "categoryFieldErrors",
+      "name": "editing self ok",
+      "args": [
+        {
+          "name": "Продукты",
+          "type": "expense",
+          "icon": "Gift",
+          "color": "#eab308"
+        },
+        [
+          {
+            "id": "cat-food",
+            "name": "Продукты",
+            "type": "expense",
+            "icon": "ShoppingCart",
+            "color": "#22c55e",
+            "isDefault": true
+          }
+        ],
+        "cat-food"
+      ],
+      "expected": {}
+    },
+    {
+      "fn": "validateCategoryInput",
+      "name": "first error",
+      "args": [
+        {
+          "name": "",
+          "type": "expense",
+          "icon": "",
+          "color": ""
+        },
+        []
+      ],
+      "expected": "Укажите название категории"
+    },
+    {
+      "fn": "resolveExcludedFromNoSpend",
+      "name": "category flag",
+      "args": [
+        {
+          "isExcludedFromNoSpend": true
+        }
+      ],
+      "expected": true
+    },
+    {
+      "fn": "resolveExcludedFromNoSpend",
+      "name": "no category",
+      "args": [
+        {
+          "$undefined": true
+        }
+      ],
+      "expected": false
+    },
+    {
+      "fn": "resolveExcludedFromNoSpend",
+      "name": "override false wins",
+      "args": [
+        {
+          "isExcludedFromNoSpend": true
+        },
+        false
+      ],
+      "expected": false
+    },
+    {
+      "fn": "resolveExcludedFromNoSpend",
+      "name": "override true wins",
+      "args": [
+        {},
+        true
+      ],
+      "expected": true
+    }
+  ]
+}

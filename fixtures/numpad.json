@@ -1,0 +1,145 @@
+{
+  "module": "numpad",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "applyNumpadKey",
+      "name": "first digit",
+      "args": [
+        "",
+        "5"
+      ],
+      "expected": "5"
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "leading zero replaced",
+      "args": [
+        "0",
+        "7"
+      ],
+      "expected": "7"
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "double zero blocked",
+      "args": [
+        "0",
+        "0"
+      ],
+      "expected": "0"
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "dot on empty",
+      "args": [
+        "",
+        "."
+      ],
+      "expected": "0."
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "second dot ignored",
+      "args": [
+        "1.5",
+        "."
+      ],
+      "expected": "1.5"
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "max 2 decimals",
+      "args": [
+        "1.25",
+        "9"
+      ],
+      "expected": "1.25"
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "decimal digit",
+      "args": [
+        "1.2",
+        "9"
+      ],
+      "expected": "1.29"
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "max 10 int digits",
+      "args": [
+        "1234567890",
+        "1"
+      ],
+      "expected": "1234567890"
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "backspace",
+      "args": [
+        "12.5",
+        "backspace"
+      ],
+      "expected": "12."
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "backspace empty",
+      "args": [
+        "",
+        "backspace"
+      ],
+      "expected": ""
+    },
+    {
+      "fn": "applyNumpadKey",
+      "name": "zero after dot",
+      "args": [
+        "0.",
+        "0"
+      ],
+      "expected": "0.0"
+    },
+    {
+      "fn": "parseAmount",
+      "name": "empty",
+      "args": [
+        ""
+      ],
+      "expected": 0
+    },
+    {
+      "fn": "parseAmount",
+      "name": "trailing dot",
+      "args": [
+        "0."
+      ],
+      "expected": 0
+    },
+    {
+      "fn": "parseAmount",
+      "name": "decimal",
+      "args": [
+        "12.5"
+      ],
+      "expected": 12.5
+    },
+    {
+      "fn": "displayAmount",
+      "name": "empty",
+      "args": [
+        ""
+      ],
+      "expected": "0"
+    },
+    {
+      "fn": "displayAmount",
+      "name": "value",
+      "args": [
+        "12.5"
+      ],
+      "expected": "12.5"
+    }
+  ]
+}

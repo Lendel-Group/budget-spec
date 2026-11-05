@@ -1,0 +1,1514 @@
+{
+  "module": "history",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "isFilterActive",
+      "name": "empty",
+      "args": [
+        {
+          "type": "all",
+          "accountId": "",
+          "categoryId": "",
+          "from": "",
+          "to": ""
+        }
+      ],
+      "expected": false
+    },
+    {
+      "fn": "isFilterActive",
+      "name": "only date",
+      "args": [
+        {
+          "type": "all",
+          "accountId": "",
+          "categoryId": "",
+          "from": "2026-11-01",
+          "to": ""
+        }
+      ],
+      "expected": true
+    },
+    {
+      "fn": "filterTransactions",
+      "name": "no filter",
+      "args": [
+        [
+          {
+            "id": "e1",
+            "date": "2026-11-03",
+            "timestamp": 3,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 5000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e2",
+            "date": "2026-11-03",
+            "timestamp": 5,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 2500.5,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-cafe"
+          },
+          {
+            "id": "e3",
+            "date": "2026-11-04",
+            "timestamp": 7,
+            "type": "expense",
+            "accountId": "acc-usd",
+            "amount": 10,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e4",
+            "date": "2026-11-04",
+            "timestamp": 8,
+            "type": "expense",
+            "accountId": "acc-eur",
+            "amount": 3,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-fun"
+          },
+          {
+            "id": "e5",
+            "date": "2026-11-05",
+            "timestamp": 9,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 700,
+            "isExcludedFromNoSpend": false
+          },
+          {
+            "id": "e6",
+            "date": "2026-11-05",
+            "timestamp": 10,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 20000,
+            "isExcludedFromNoSpend": true,
+            "categoryId": "cat-credit",
+            "debtId": "d1"
+          },
+          {
+            "id": "e7",
+            "date": "2026-11-05",
+            "timestamp": 11,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 15000,
+            "isExcludedFromNoSpend": true,
+            "goalId": "g1"
+          },
+          {
+            "id": "i1",
+            "date": "2026-11-01",
+            "timestamp": 1,
+            "type": "income",
+            "accountId": "acc-kzt",
+            "amount": 400000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-salary"
+          },
+          {
+            "id": "i2",
+            "date": "2026-10-10",
+            "timestamp": 0,
+            "type": "income",
+            "accountId": "acc-usd",
+            "amount": 50,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-bonus"
+          },
+          {
+            "id": "tr1",
+            "date": "2026-11-02",
+            "timestamp": 2,
+            "type": "transfer",
+            "accountId": "acc-kzt",
+            "amount": 50000,
+            "isExcludedFromNoSpend": false,
+            "toAccountId": "acc-usd",
+            "toAmount": 100
+          },
+          {
+            "id": "e8",
+            "date": "2026-10-20",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 12000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e9",
+            "date": "2026-01-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 999.99,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-transport"
+          },
+          {
+            "id": "old",
+            "date": "2025-12-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 100,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          }
+        ],
+        {
+          "type": "all",
+          "accountId": "",
+          "categoryId": "",
+          "from": "",
+          "to": ""
+        }
+      ],
+      "expected": [
+        {
+          "id": "e1",
+          "date": "2026-11-03",
+          "timestamp": 3,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 5000,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-food"
+        },
+        {
+          "id": "e2",
+          "date": "2026-11-03",
+          "timestamp": 5,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 2500.5,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-cafe"
+        },
+        {
+          "id": "e3",
+          "date": "2026-11-04",
+          "timestamp": 7,
+          "type": "expense",
+          "accountId": "acc-usd",
+          "amount": 10,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-food"
+        },
+        {
+          "id": "e4",
+          "date": "2026-11-04",
+          "timestamp": 8,
+          "type": "expense",
+          "accountId": "acc-eur",
+          "amount": 3,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-fun"
+        },
+        {
+          "id": "e5",
+          "date": "2026-11-05",
+          "timestamp": 9,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 700,
+          "isExcludedFromNoSpend": false
+        },
+        {
+          "id": "e6",
+          "date": "2026-11-05",
+          "timestamp": 10,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 20000,
+          "isExcludedFromNoSpend": true,
+          "categoryId": "cat-credit",
+          "debtId": "d1"
+        },
+        {
+          "id": "e7",
+          "date": "2026-11-05",
+          "timestamp": 11,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 15000,
+          "isExcludedFromNoSpend": true,
+          "goalId": "g1"
+        },
+        {
+          "id": "i1",
+          "date": "2026-11-01",
+          "timestamp": 1,
+          "type": "income",
+          "accountId": "acc-kzt",
+          "amount": 400000,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-salary"
+        },
+        {
+          "id": "i2",
+          "date": "2026-10-10",
+          "timestamp": 0,
+          "type": "income",
+          "accountId": "acc-usd",
+          "amount": 50,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-bonus"
+        },
+        {
+          "id": "tr1",
+          "date": "2026-11-02",
+          "timestamp": 2,
+          "type": "transfer",
+          "accountId": "acc-kzt",
+          "amount": 50000,
+          "isExcludedFromNoSpend": false,
+          "toAccountId": "acc-usd",
+          "toAmount": 100
+        },
+        {
+          "id": "e8",
+          "date": "2026-10-20",
+          "timestamp": 0,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 12000,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-food"
+        },
+        {
+          "id": "e9",
+          "date": "2026-01-31",
+          "timestamp": 0,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 999.99,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-transport"
+        },
+        {
+          "id": "old",
+          "date": "2025-12-31",
+          "timestamp": 0,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 100,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-food"
+        }
+      ]
+    },
+    {
+      "fn": "filterTransactions",
+      "name": "account includes transfer target",
+      "args": [
+        [
+          {
+            "id": "e1",
+            "date": "2026-11-03",
+            "timestamp": 3,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 5000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e2",
+            "date": "2026-11-03",
+            "timestamp": 5,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 2500.5,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-cafe"
+          },
+          {
+            "id": "e3",
+            "date": "2026-11-04",
+            "timestamp": 7,
+            "type": "expense",
+            "accountId": "acc-usd",
+            "amount": 10,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e4",
+            "date": "2026-11-04",
+            "timestamp": 8,
+            "type": "expense",
+            "accountId": "acc-eur",
+            "amount": 3,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-fun"
+          },
+          {
+            "id": "e5",
+            "date": "2026-11-05",
+            "timestamp": 9,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 700,
+            "isExcludedFromNoSpend": false
+          },
+          {
+            "id": "e6",
+            "date": "2026-11-05",
+            "timestamp": 10,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 20000,
+            "isExcludedFromNoSpend": true,
+            "categoryId": "cat-credit",
+            "debtId": "d1"
+          },
+          {
+            "id": "e7",
+            "date": "2026-11-05",
+            "timestamp": 11,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 15000,
+            "isExcludedFromNoSpend": true,
+            "goalId": "g1"
+          },
+          {
+            "id": "i1",
+            "date": "2026-11-01",
+            "timestamp": 1,
+            "type": "income",
+            "accountId": "acc-kzt",
+            "amount": 400000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-salary"
+          },
+          {
+            "id": "i2",
+            "date": "2026-10-10",
+            "timestamp": 0,
+            "type": "income",
+            "accountId": "acc-usd",
+            "amount": 50,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-bonus"
+          },
+          {
+            "id": "tr1",
+            "date": "2026-11-02",
+            "timestamp": 2,
+            "type": "transfer",
+            "accountId": "acc-kzt",
+            "amount": 50000,
+            "isExcludedFromNoSpend": false,
+            "toAccountId": "acc-usd",
+            "toAmount": 100
+          },
+          {
+            "id": "e8",
+            "date": "2026-10-20",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 12000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e9",
+            "date": "2026-01-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 999.99,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-transport"
+          },
+          {
+            "id": "old",
+            "date": "2025-12-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 100,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          }
+        ],
+        {
+          "type": "all",
+          "accountId": "acc-usd",
+          "categoryId": "",
+          "from": "",
+          "to": ""
+        }
+      ],
+      "expected": [
+        {
+          "id": "e3",
+          "date": "2026-11-04",
+          "timestamp": 7,
+          "type": "expense",
+          "accountId": "acc-usd",
+          "amount": 10,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-food"
+        },
+        {
+          "id": "i2",
+          "date": "2026-10-10",
+          "timestamp": 0,
+          "type": "income",
+          "accountId": "acc-usd",
+          "amount": 50,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-bonus"
+        },
+        {
+          "id": "tr1",
+          "date": "2026-11-02",
+          "timestamp": 2,
+          "type": "transfer",
+          "accountId": "acc-kzt",
+          "amount": 50000,
+          "isExcludedFromNoSpend": false,
+          "toAccountId": "acc-usd",
+          "toAmount": 100
+        }
+      ]
+    },
+    {
+      "fn": "filterTransactions",
+      "name": "expense + category + range",
+      "args": [
+        [
+          {
+            "id": "e1",
+            "date": "2026-11-03",
+            "timestamp": 3,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 5000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e2",
+            "date": "2026-11-03",
+            "timestamp": 5,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 2500.5,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-cafe"
+          },
+          {
+            "id": "e3",
+            "date": "2026-11-04",
+            "timestamp": 7,
+            "type": "expense",
+            "accountId": "acc-usd",
+            "amount": 10,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e4",
+            "date": "2026-11-04",
+            "timestamp": 8,
+            "type": "expense",
+            "accountId": "acc-eur",
+            "amount": 3,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-fun"
+          },
+          {
+            "id": "e5",
+            "date": "2026-11-05",
+            "timestamp": 9,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 700,
+            "isExcludedFromNoSpend": false
+          },
+          {
+            "id": "e6",
+            "date": "2026-11-05",
+            "timestamp": 10,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 20000,
+            "isExcludedFromNoSpend": true,
+            "categoryId": "cat-credit",
+            "debtId": "d1"
+          },
+          {
+            "id": "e7",
+            "date": "2026-11-05",
+            "timestamp": 11,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 15000,
+            "isExcludedFromNoSpend": true,
+            "goalId": "g1"
+          },
+          {
+            "id": "i1",
+            "date": "2026-11-01",
+            "timestamp": 1,
+            "type": "income",
+            "accountId": "acc-kzt",
+            "amount": 400000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-salary"
+          },
+          {
+            "id": "i2",
+            "date": "2026-10-10",
+            "timestamp": 0,
+            "type": "income",
+            "accountId": "acc-usd",
+            "amount": 50,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-bonus"
+          },
+          {
+            "id": "tr1",
+            "date": "2026-11-02",
+            "timestamp": 2,
+            "type": "transfer",
+            "accountId": "acc-kzt",
+            "amount": 50000,
+            "isExcludedFromNoSpend": false,
+            "toAccountId": "acc-usd",
+            "toAmount": 100
+          },
+          {
+            "id": "e8",
+            "date": "2026-10-20",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 12000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e9",
+            "date": "2026-01-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 999.99,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-transport"
+          },
+          {
+            "id": "old",
+            "date": "2025-12-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 100,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          }
+        ],
+        {
+          "type": "expense",
+          "accountId": "",
+          "categoryId": "cat-food",
+          "from": "2026-10-01",
+          "to": "2026-11-03"
+        }
+      ],
+      "expected": [
+        {
+          "id": "e1",
+          "date": "2026-11-03",
+          "timestamp": 3,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 5000,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-food"
+        },
+        {
+          "id": "e8",
+          "date": "2026-10-20",
+          "timestamp": 0,
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 12000,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-food"
+        }
+      ]
+    },
+    {
+      "fn": "filterTransactions",
+      "name": "transfers only",
+      "args": [
+        [
+          {
+            "id": "e1",
+            "date": "2026-11-03",
+            "timestamp": 3,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 5000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e2",
+            "date": "2026-11-03",
+            "timestamp": 5,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 2500.5,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-cafe"
+          },
+          {
+            "id": "e3",
+            "date": "2026-11-04",
+            "timestamp": 7,
+            "type": "expense",
+            "accountId": "acc-usd",
+            "amount": 10,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e4",
+            "date": "2026-11-04",
+            "timestamp": 8,
+            "type": "expense",
+            "accountId": "acc-eur",
+            "amount": 3,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-fun"
+          },
+          {
+            "id": "e5",
+            "date": "2026-11-05",
+            "timestamp": 9,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 700,
+            "isExcludedFromNoSpend": false
+          },
+          {
+            "id": "e6",
+            "date": "2026-11-05",
+            "timestamp": 10,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 20000,
+            "isExcludedFromNoSpend": true,
+            "categoryId": "cat-credit",
+            "debtId": "d1"
+          },
+          {
+            "id": "e7",
+            "date": "2026-11-05",
+            "timestamp": 11,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 15000,
+            "isExcludedFromNoSpend": true,
+            "goalId": "g1"
+          },
+          {
+            "id": "i1",
+            "date": "2026-11-01",
+            "timestamp": 1,
+            "type": "income",
+            "accountId": "acc-kzt",
+            "amount": 400000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-salary"
+          },
+          {
+            "id": "i2",
+            "date": "2026-10-10",
+            "timestamp": 0,
+            "type": "income",
+            "accountId": "acc-usd",
+            "amount": 50,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-bonus"
+          },
+          {
+            "id": "tr1",
+            "date": "2026-11-02",
+            "timestamp": 2,
+            "type": "transfer",
+            "accountId": "acc-kzt",
+            "amount": 50000,
+            "isExcludedFromNoSpend": false,
+            "toAccountId": "acc-usd",
+            "toAmount": 100
+          },
+          {
+            "id": "e8",
+            "date": "2026-10-20",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 12000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e9",
+            "date": "2026-01-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 999.99,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-transport"
+          },
+          {
+            "id": "old",
+            "date": "2025-12-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 100,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          }
+        ],
+        {
+          "type": "transfer",
+          "accountId": "",
+          "categoryId": "",
+          "from": "",
+          "to": ""
+        }
+      ],
+      "expected": [
+        {
+          "id": "tr1",
+          "date": "2026-11-02",
+          "timestamp": 2,
+          "type": "transfer",
+          "accountId": "acc-kzt",
+          "amount": 50000,
+          "isExcludedFromNoSpend": false,
+          "toAccountId": "acc-usd",
+          "toAmount": 100
+        }
+      ]
+    },
+    {
+      "fn": "periodRange",
+      "name": "all",
+      "args": [
+        "all",
+        "2026-11-05"
+      ],
+      "expected": {
+        "from": "",
+        "to": ""
+      }
+    },
+    {
+      "fn": "periodRange",
+      "name": "month",
+      "args": [
+        "month",
+        "2026-11-05"
+      ],
+      "expected": {
+        "from": "2026-11-01",
+        "to": "2026-11-30"
+      }
+    },
+    {
+      "fn": "periodRange",
+      "name": "prev-month",
+      "args": [
+        "prev-month",
+        "2026-11-05"
+      ],
+      "expected": {
+        "from": "2026-10-01",
+        "to": "2026-10-31"
+      }
+    },
+    {
+      "fn": "periodRange",
+      "name": "prev-month in january",
+      "args": [
+        "prev-month",
+        "2026-01-10"
+      ],
+      "expected": {
+        "from": "2025-12-01",
+        "to": "2025-12-31"
+      }
+    },
+    {
+      "fn": "periodRange",
+      "name": "30d",
+      "args": [
+        "30d",
+        "2026-11-05"
+      ],
+      "expected": {
+        "from": "2026-10-07",
+        "to": "2026-11-05"
+      }
+    },
+    {
+      "fn": "periodRange",
+      "name": "month february",
+      "args": [
+        "month",
+        "2028-02-10"
+      ],
+      "expected": {
+        "from": "2028-02-01",
+        "to": "2028-02-29"
+      }
+    },
+    {
+      "fn": "groupByDay",
+      "name": "year txs with rates",
+      "args": [
+        [
+          {
+            "id": "e1",
+            "date": "2026-11-03",
+            "timestamp": 3,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 5000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e2",
+            "date": "2026-11-03",
+            "timestamp": 5,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 2500.5,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-cafe"
+          },
+          {
+            "id": "e3",
+            "date": "2026-11-04",
+            "timestamp": 7,
+            "type": "expense",
+            "accountId": "acc-usd",
+            "amount": 10,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e4",
+            "date": "2026-11-04",
+            "timestamp": 8,
+            "type": "expense",
+            "accountId": "acc-eur",
+            "amount": 3,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-fun"
+          },
+          {
+            "id": "e5",
+            "date": "2026-11-05",
+            "timestamp": 9,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 700,
+            "isExcludedFromNoSpend": false
+          },
+          {
+            "id": "e6",
+            "date": "2026-11-05",
+            "timestamp": 10,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 20000,
+            "isExcludedFromNoSpend": true,
+            "categoryId": "cat-credit",
+            "debtId": "d1"
+          },
+          {
+            "id": "e7",
+            "date": "2026-11-05",
+            "timestamp": 11,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 15000,
+            "isExcludedFromNoSpend": true,
+            "goalId": "g1"
+          },
+          {
+            "id": "i1",
+            "date": "2026-11-01",
+            "timestamp": 1,
+            "type": "income",
+            "accountId": "acc-kzt",
+            "amount": 400000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-salary"
+          },
+          {
+            "id": "i2",
+            "date": "2026-10-10",
+            "timestamp": 0,
+            "type": "income",
+            "accountId": "acc-usd",
+            "amount": 50,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-bonus"
+          },
+          {
+            "id": "tr1",
+            "date": "2026-11-02",
+            "timestamp": 2,
+            "type": "transfer",
+            "accountId": "acc-kzt",
+            "amount": 50000,
+            "isExcludedFromNoSpend": false,
+            "toAccountId": "acc-usd",
+            "toAmount": 100
+          },
+          {
+            "id": "e8",
+            "date": "2026-10-20",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 12000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          },
+          {
+            "id": "e9",
+            "date": "2026-01-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 999.99,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-transport"
+          },
+          {
+            "id": "old",
+            "date": "2025-12-31",
+            "timestamp": 0,
+            "type": "expense",
+            "accountId": "acc-kzt",
+            "amount": 100,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          }
+        ],
+        [
+          {
+            "id": "acc-kzt",
+            "name": "Карта",
+            "type": "card",
+            "currency": "KZT",
+            "initialBalance": 0,
+            "currentBalance": 0,
+            "isArchived": false,
+            "createdAt": "2026-10-15T09:00:00.000Z"
+          },
+          {
+            "id": "acc-usd",
+            "name": "Доллары",
+            "type": "card",
+            "currency": "USD",
+            "initialBalance": 0,
+            "currentBalance": 100,
+            "isArchived": false,
+            "createdAt": "2026-10-15T09:00:00.000Z"
+          },
+          {
+            "id": "acc-eur",
+            "name": "Евро",
+            "type": "card",
+            "currency": "EUR",
+            "initialBalance": 0,
+            "currentBalance": 50,
+            "isArchived": false,
+            "createdAt": "2026-10-15T09:00:00.000Z"
+          }
+        ],
+        {
+          "USD": 500,
+          "EUR": 550.5
+        }
+      ],
+      "expected": [
+        {
+          "date": "2026-11-05",
+          "items": [
+            {
+              "id": "e7",
+              "date": "2026-11-05",
+              "timestamp": 11,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 15000,
+              "isExcludedFromNoSpend": true,
+              "goalId": "g1"
+            },
+            {
+              "id": "e6",
+              "date": "2026-11-05",
+              "timestamp": 10,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 20000,
+              "isExcludedFromNoSpend": true,
+              "categoryId": "cat-credit",
+              "debtId": "d1"
+            },
+            {
+              "id": "e5",
+              "date": "2026-11-05",
+              "timestamp": 9,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 700,
+              "isExcludedFromNoSpend": false
+            }
+          ],
+          "totalKzt": -35700
+        },
+        {
+          "date": "2026-11-04",
+          "items": [
+            {
+              "id": "e4",
+              "date": "2026-11-04",
+              "timestamp": 8,
+              "type": "expense",
+              "accountId": "acc-eur",
+              "amount": 3,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-fun"
+            },
+            {
+              "id": "e3",
+              "date": "2026-11-04",
+              "timestamp": 7,
+              "type": "expense",
+              "accountId": "acc-usd",
+              "amount": 10,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food"
+            }
+          ],
+          "totalKzt": -6651.5
+        },
+        {
+          "date": "2026-11-03",
+          "items": [
+            {
+              "id": "e2",
+              "date": "2026-11-03",
+              "timestamp": 5,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 2500.5,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-cafe"
+            },
+            {
+              "id": "e1",
+              "date": "2026-11-03",
+              "timestamp": 3,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 5000,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food"
+            }
+          ],
+          "totalKzt": -7500.5
+        },
+        {
+          "date": "2026-11-02",
+          "items": [
+            {
+              "id": "tr1",
+              "date": "2026-11-02",
+              "timestamp": 2,
+              "type": "transfer",
+              "accountId": "acc-kzt",
+              "amount": 50000,
+              "isExcludedFromNoSpend": false,
+              "toAccountId": "acc-usd",
+              "toAmount": 100
+            }
+          ],
+          "totalKzt": null
+        },
+        {
+          "date": "2026-11-01",
+          "items": [
+            {
+              "id": "i1",
+              "date": "2026-11-01",
+              "timestamp": 1,
+              "type": "income",
+              "accountId": "acc-kzt",
+              "amount": 400000,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-salary"
+            }
+          ],
+          "totalKzt": 400000
+        },
+        {
+          "date": "2026-10-20",
+          "items": [
+            {
+              "id": "e8",
+              "date": "2026-10-20",
+              "timestamp": 0,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 12000,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food"
+            }
+          ],
+          "totalKzt": -12000
+        },
+        {
+          "date": "2026-10-10",
+          "items": [
+            {
+              "id": "i2",
+              "date": "2026-10-10",
+              "timestamp": 0,
+              "type": "income",
+              "accountId": "acc-usd",
+              "amount": 50,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-bonus"
+            }
+          ],
+          "totalKzt": 25000
+        },
+        {
+          "date": "2026-01-31",
+          "items": [
+            {
+              "id": "e9",
+              "date": "2026-01-31",
+              "timestamp": 0,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 999.99,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-transport"
+            }
+          ],
+          "totalKzt": -999.99
+        },
+        {
+          "date": "2025-12-31",
+          "items": [
+            {
+              "id": "old",
+              "date": "2025-12-31",
+              "timestamp": 0,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 100,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food"
+            }
+          ],
+          "totalKzt": -100
+        }
+      ]
+    },
+    {
+      "fn": "groupByDay",
+      "name": "only transfer → null total",
+      "args": [
+        [
+          {
+            "id": "t1",
+            "date": "2026-11-03",
+            "timestamp": 1000,
+            "type": "transfer",
+            "accountId": "acc-kzt",
+            "amount": 1000,
+            "isExcludedFromNoSpend": false,
+            "toAccountId": "acc-usd"
+          }
+        ],
+        [
+          {
+            "id": "acc-kzt",
+            "name": "Карта",
+            "type": "card",
+            "currency": "KZT",
+            "initialBalance": 0,
+            "currentBalance": 0,
+            "isArchived": false,
+            "createdAt": "2026-10-15T09:00:00.000Z"
+          },
+          {
+            "id": "acc-usd",
+            "name": "Доллары",
+            "type": "card",
+            "currency": "USD",
+            "initialBalance": 0,
+            "currentBalance": 100,
+            "isArchived": false,
+            "createdAt": "2026-10-15T09:00:00.000Z"
+          },
+          {
+            "id": "acc-eur",
+            "name": "Евро",
+            "type": "card",
+            "currency": "EUR",
+            "initialBalance": 0,
+            "currentBalance": 50,
+            "isArchived": false,
+            "createdAt": "2026-10-15T09:00:00.000Z"
+          }
+        ],
+        {
+          "USD": 500,
+          "EUR": 550.5
+        }
+      ],
+      "expected": [
+        {
+          "date": "2026-11-03",
+          "items": [
+            {
+              "id": "t1",
+              "date": "2026-11-03",
+              "timestamp": 1000,
+              "type": "transfer",
+              "accountId": "acc-kzt",
+              "amount": 1000,
+              "isExcludedFromNoSpend": false,
+              "toAccountId": "acc-usd"
+            }
+          ],
+          "totalKzt": null
+        }
+      ]
+    },
+    {
+      "fn": "groupByDay",
+      "name": "no rate → null total",
+      "args": [
+        [
+          {
+            "id": "t1",
+            "date": "2026-11-03",
+            "timestamp": 1000,
+            "type": "expense",
+            "accountId": "acc-eur",
+            "amount": 1000,
+            "isExcludedFromNoSpend": false,
+            "categoryId": "cat-food"
+          }
+        ],
+        [
+          {
+            "id": "acc-kzt",
+            "name": "Карта",
+            "type": "card",
+            "currency": "KZT",
+            "initialBalance": 0,
+            "currentBalance": 0,
+            "isArchived": false,
+            "createdAt": "2026-10-15T09:00:00.000Z"
+          },
+          {
+            "id": "acc-usd",
+            "name": "Доллары",
+            "type": "card",
+            "currency": "USD",
+            "initialBalance": 0,
+            "currentBalance": 100,
+            "isArchived": false,
+            "createdAt": "2026-10-15T09:00:00.000Z"
+          },
+          {
+            "id": "acc-eur",
+            "name": "Евро",
+            "type": "card",
+            "currency": "EUR",
+            "initialBalance": 0,
+            "currentBalance": 50,
+            "isArchived": false,
+            "createdAt": "2026-10-15T09:00:00.000Z"
+          }
+        ],
+        {}
+      ],
+      "expected": [
+        {
+          "date": "2026-11-03",
+          "items": [
+            {
+              "id": "t1",
+              "date": "2026-11-03",
+              "timestamp": 1000,
+              "type": "expense",
+              "accountId": "acc-eur",
+              "amount": 1000,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food"
+            }
+          ],
+          "totalKzt": null
+        }
+      ]
+    },
+    {
+      "fn": "takeGroups",
+      "name": "whole days until min reached",
+      "args": [
+        [
+          {
+            "date": "2026-11-05",
+            "items": [
+              {
+                "id": "a",
+                "date": "2026-11-03",
+                "timestamp": 1000,
+                "type": "expense",
+                "accountId": "acc-kzt",
+                "amount": 1000,
+                "isExcludedFromNoSpend": false,
+                "categoryId": "cat-food"
+              },
+              {
+                "id": "b",
+                "date": "2026-11-03",
+                "timestamp": 1000,
+                "type": "expense",
+                "accountId": "acc-kzt",
+                "amount": 1000,
+                "isExcludedFromNoSpend": false,
+                "categoryId": "cat-food"
+              }
+            ],
+            "totalKzt": -2000
+          },
+          {
+            "date": "2026-11-04",
+            "items": [
+              {
+                "id": "c",
+                "date": "2026-11-03",
+                "timestamp": 1000,
+                "type": "expense",
+                "accountId": "acc-kzt",
+                "amount": 1000,
+                "isExcludedFromNoSpend": false,
+                "categoryId": "cat-food"
+              }
+            ],
+            "totalKzt": -1000
+          },
+          {
+            "date": "2026-11-03",
+            "items": [
+              {
+                "id": "d",
+                "date": "2026-11-03",
+                "timestamp": 1000,
+                "type": "expense",
+                "accountId": "acc-kzt",
+                "amount": 1000,
+                "isExcludedFromNoSpend": false,
+                "categoryId": "cat-food"
+              }
+            ],
+            "totalKzt": -1000
+          }
+        ],
+        3
+      ],
+      "expected": [
+        {
+          "date": "2026-11-05",
+          "items": [
+            {
+              "id": "a",
+              "date": "2026-11-03",
+              "timestamp": 1000,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 1000,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food"
+            },
+            {
+              "id": "b",
+              "date": "2026-11-03",
+              "timestamp": 1000,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 1000,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food"
+            }
+          ],
+          "totalKzt": -2000
+        },
+        {
+          "date": "2026-11-04",
+          "items": [
+            {
+              "id": "c",
+              "date": "2026-11-03",
+              "timestamp": 1000,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 1000,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food"
+            }
+          ],
+          "totalKzt": -1000
+        }
+      ]
+    },
+    {
+      "fn": "takeGroups",
+      "name": "empty",
+      "args": [
+        [],
+        100
+      ],
+      "expected": []
+    }
+  ]
+}

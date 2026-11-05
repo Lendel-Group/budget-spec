@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/al-writer/budget-spec/schema/backup-v2.schema.json",
+  "title": "My Budget — резервная копия, schemaVersion 2",
+  "description": "Структура файла. Порядок проверок и тексты ошибок — spec/04-backup-format.md и fixtures/backupValidation.json. Лишние поля допускаются.",
+  "type": "object",
+  "required": ["app", "schemaVersion", "exportedAt", "data"],
+  "properties": {
+    "app": { "const": "pwa-budget" },
+    "schemaVersion": { "const": 2 },
+    "exportedAt": { "type": "string", "description": "ISO-8601" },
+    "data": {
+      "type": "object",
+      "required": ["accounts", "categories", "budgetLimits", "transactions", "debts", "goals", "config"],
+      "properties": {
+        "accounts": { "type": "array", "items": { "$ref": "#/$defs/account" } },
+        "categories": { "type": "array", "items": { "$ref": "#/$defs/category" } },
+        "budgetLimits": { "type": "array", "items": { "$ref": "#/$defs/budgetLimit" } },
+        "transactions": { "type": "array", "items": { "$ref": "#/$defs/transaction" } },
+        "debts": { "type": "array", "items": { "$ref": "#/$defs/debt" } },
+        "goals": { "type": "array", "items": { "$ref": "#/$defs/goal" } },
+        "config": { "type": "array", "items": { "$ref": "#/$defs/configEntry" } }
+      }
+    }
+  },
+  "$defs": {
+    "currency": { "enum": ["KZT", "USD", "RUB", "EUR"] },
+    "account": {
+      "type": "object",
+      "required": ["id", "name", "type", "currency", "initialBalance", "currentBalance", "isArchived", "createdAt"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "enum": ["card", "cash", "deposit"] },
+        "currency": { "$ref": "#/$defs/currency" },
+        "initialBalance": { "type": "number" },
+        "currentBalance": { "type": "number" },
+        "isArchived": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "category": {
+      "type": "object",
+      "required": ["id", "name", "type", "icon", "color", "isDefault"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "enum": ["expense", "income"] },
+        "icon": { "type": "string" },
+        "color": { "type": "string" },
+        "isDefault": { "type": "boolean" },
+        "isArchived": { "type": "boolean" },
+        "order": { "type": "number" },
+        "isExcludedFromNoSpend": { "type": "boolean" }
+      }
+    },
+    "budgetLimit": {
+      "type": "object",
+      "required": ["id", "year", "month", "categoryId", "plannedAmount"],
+      "properties": {
+        "id": { "type": "string", "description": "{year}-{month}-{categoryId}, месяц без ведущего нуля" },
+        "year": { "type": "number" },
+        "month": { "type": "number" },
+        "categoryId": { "type": "string" },
+        "plannedAmount": { "type": "number" }
+      }
+    },
+    "transaction": {
+      "type": "object",
+      "required": ["id", "date", "timestamp", "type", "accountId", "amount", "isExcludedFromNoSpend"],
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string", "description": "YYYY-MM-DD, локальная дата" },
+        "timestamp": { "type": "number" },
+        "type": { "enum": ["expense", "income", "transfer"] },
+        "accountId": { "type": "string" },
+        "toAccountId": { "type": "string" },
+        "toAmount": { "type": "number" },
+        "categoryId": { "type": "string" },
+        "debtId": { "type": "string" },
+        "goalId": { "type": "string" },
+        "amount": { "type": "number" },
+        "comment": { "type": "string" },
+        "isExcludedFromNoSpend": { "type": "boolean" }
+      }
+    },
+    "debt": {
+      "type": "object",
+      "required": ["id", "name", "totalAmount", "remainingAmount", "monthlyPayment", "dueDay", "createdAt", "isClosed"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "remainingAmount": { "type": "number" },
+        "monthlyPayment": { "type": "number" },
+        "dueDay": { "type": "number" },
+        "interestRate": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "isClosed": { "type": "boolean" }
+      }
+    },
+    "goal": {
+      "type": "object",
+      "required": ["id", "title", "targetAmount", "currentAmount", "targetDate", "icon", "color", "isAchieved"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "targetAmount": { "type": "number" },
+        "currentAmount": { "type": "number" },
+        "targetDate": { "type": "string" },
+        "icon": { "type": "string" },
+        "color": { "type": "string" },
+        "isAchieved": { "type": "boolean" }
+      }
+    },
+    "configEntry": {
+      "type": "object",
+      "required": ["key", "value"],
+      "properties": {
+        "key": { "type": "string" },
+        "value": {}
+      }
+    }
+  }
+}

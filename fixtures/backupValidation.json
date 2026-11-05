@@ -1,0 +1,468 @@
+{
+  "module": "backupValidation",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "parseBackup",
+      "name": "valid",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "app": "pwa-budget",
+        "schemaVersion": 2,
+        "exportedAt": "2026-11-05T10:00:00.000Z",
+        "data": {
+          "accounts": [
+            {
+              "id": "acc-kzt",
+              "name": "Карта",
+              "type": "card",
+              "currency": "KZT",
+              "initialBalance": 0,
+              "currentBalance": 5,
+              "isArchived": false,
+              "createdAt": "2026-10-15T09:00:00.000Z"
+            },
+            {
+              "id": "acc-usd",
+              "name": "Карта",
+              "type": "card",
+              "currency": "USD",
+              "initialBalance": 0,
+              "currentBalance": 0,
+              "isArchived": false,
+              "createdAt": "2026-10-15T09:00:00.000Z"
+            }
+          ],
+          "categories": [
+            {
+              "id": "cat-food",
+              "name": "Продукты",
+              "type": "expense",
+              "icon": "ShoppingCart",
+              "color": "#22c55e",
+              "isDefault": true
+            },
+            {
+              "id": "cat-x",
+              "name": "Своя",
+              "type": "expense",
+              "icon": "ShoppingCart",
+              "color": "#22c55e",
+              "isDefault": false,
+              "isArchived": true,
+              "order": 1,
+              "isExcludedFromNoSpend": true
+            }
+          ],
+          "budgetLimits": [
+            {
+              "id": "2026-11-cat-food",
+              "year": 2026,
+              "month": 11,
+              "categoryId": "cat-food",
+              "plannedAmount": 10
+            }
+          ],
+          "transactions": [
+            {
+              "id": "t1",
+              "date": "2026-11-03",
+              "timestamp": 1000,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 1000,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food",
+              "comment": "привет"
+            },
+            {
+              "id": "t2",
+              "date": "2026-11-03",
+              "timestamp": 1000,
+              "type": "transfer",
+              "accountId": "acc-kzt",
+              "amount": 1000,
+              "isExcludedFromNoSpend": true,
+              "toAccountId": "acc-usd",
+              "toAmount": 2
+            }
+          ],
+          "debts": [
+            {
+              "id": "d1",
+              "name": "Кредит",
+              "totalAmount": 100000,
+              "remainingAmount": 50000,
+              "monthlyPayment": 10000,
+              "dueDay": 15,
+              "createdAt": "2026-10-01T00:00:00.000Z",
+              "isClosed": false,
+              "interestRate": 3
+            }
+          ],
+          "goals": [
+            {
+              "id": "g1",
+              "title": "Отпуск",
+              "targetAmount": 300000,
+              "currentAmount": 100000,
+              "targetDate": "2027-05-01",
+              "icon": "Target",
+              "color": "#22c55e",
+              "isAchieved": false
+            }
+          ],
+          "config": [
+            {
+              "key": "fx_rates",
+              "value": {
+                "rates": {
+                  "USD": 500
+                },
+                "date": "2026-11-05",
+                "source": "nbk"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "empty tables",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[],\"categories\":[],\"budgetLimits\":[],\"transactions\":[],\"debts\":[],\"goals\":[],\"config\":[]}}"
+      ],
+      "expected": {
+        "app": "pwa-budget",
+        "schemaVersion": 2,
+        "exportedAt": "2026-11-05T10:00:00.000Z",
+        "data": {
+          "accounts": [],
+          "categories": [],
+          "budgetLimits": [],
+          "transactions": [],
+          "debts": [],
+          "goals": [],
+          "config": []
+        }
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "invalid JSON",
+      "args": [
+        "{oops"
+      ],
+      "expected": {
+        "$error": "Файл не является корректным JSON"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "wrong app",
+      "args": [
+        "{\"app\":\"other\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "Это не файл резервной копии приложения"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "array root",
+      "args": [
+        "[]"
+      ],
+      "expected": {
+        "$error": "Это не файл резервной копии приложения"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "unsupported version",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":3,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "Неподдерживаемая версия схемы: 3"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "no exportedAt",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "Нет даты экспорта"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "no data",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":[]}"
+      ],
+      "expected": {
+        "$error": "Нет блока data"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "table not array",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":{},\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "goals: ожидался массив"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "row not object",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[1],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "debts[0]: ожидался объект"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "bad enum",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"GBP\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "accounts[0].currency: недопустимое значение"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "string instead of number",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":\"5\",\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "transactions[0].amount: ожидалось число"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "missing required string",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "categories[0].name: ожидался тип string"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "optional of wrong type",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":5},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "transactions[0].comment: ожидался тип string"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "duplicate id",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false},{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "goals: повторяющийся id g1"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "config row invalid",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\"}]}}"
+      ],
+      "expected": {
+        "$error": "config[0]: некорректная запись"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "config not array",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}]}}"
+      ],
+      "expected": {
+        "$error": "config: ожидался массив"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "dangling account ref",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"ghost\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]}}"
+      ],
+      "expected": {
+        "$error": "transactions: ссылка на несуществующий счёт (t2)"
+      }
+    },
+    {
+      "fn": "parseBackup",
+      "name": "unknown extra fields kept",
+      "args": [
+        "{\"app\":\"pwa-budget\",\"schemaVersion\":2,\"exportedAt\":\"2026-11-05T10:00:00.000Z\",\"data\":{\"accounts\":[{\"id\":\"acc-kzt\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"KZT\",\"initialBalance\":0,\"currentBalance\":5,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\",\"future\":1},{\"id\":\"acc-usd\",\"name\":\"Карта\",\"type\":\"card\",\"currency\":\"USD\",\"initialBalance\":0,\"currentBalance\":0,\"isArchived\":false,\"createdAt\":\"2026-10-15T09:00:00.000Z\"}],\"categories\":[{\"id\":\"cat-food\",\"name\":\"Продукты\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":true},{\"id\":\"cat-x\",\"name\":\"Своя\",\"type\":\"expense\",\"icon\":\"ShoppingCart\",\"color\":\"#22c55e\",\"isDefault\":false,\"isArchived\":true,\"order\":1,\"isExcludedFromNoSpend\":true}],\"budgetLimits\":[{\"id\":\"2026-11-cat-food\",\"year\":2026,\"month\":11,\"categoryId\":\"cat-food\",\"plannedAmount\":10}],\"transactions\":[{\"id\":\"t1\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"expense\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":false,\"categoryId\":\"cat-food\",\"comment\":\"привет\"},{\"id\":\"t2\",\"date\":\"2026-11-03\",\"timestamp\":1000,\"type\":\"transfer\",\"accountId\":\"acc-kzt\",\"amount\":1000,\"isExcludedFromNoSpend\":true,\"toAccountId\":\"acc-usd\",\"toAmount\":2}],\"debts\":[{\"id\":\"d1\",\"name\":\"Кредит\",\"totalAmount\":100000,\"remainingAmount\":50000,\"monthlyPayment\":10000,\"dueDay\":15,\"createdAt\":\"2026-10-01T00:00:00.000Z\",\"isClosed\":false,\"interestRate\":3}],\"goals\":[{\"id\":\"g1\",\"title\":\"Отпуск\",\"targetAmount\":300000,\"currentAmount\":100000,\"targetDate\":\"2027-05-01\",\"icon\":\"Target\",\"color\":\"#22c55e\",\"isAchieved\":false}],\"config\":[{\"key\":\"fx_rates\",\"value\":{\"rates\":{\"USD\":500},\"date\":\"2026-11-05\",\"source\":\"nbk\"}}]},\"extra\":true}"
+      ],
+      "expected": {
+        "app": "pwa-budget",
+        "schemaVersion": 2,
+        "exportedAt": "2026-11-05T10:00:00.000Z",
+        "data": {
+          "accounts": [
+            {
+              "id": "acc-kzt",
+              "name": "Карта",
+              "type": "card",
+              "currency": "KZT",
+              "initialBalance": 0,
+              "currentBalance": 5,
+              "isArchived": false,
+              "createdAt": "2026-10-15T09:00:00.000Z",
+              "future": 1
+            },
+            {
+              "id": "acc-usd",
+              "name": "Карта",
+              "type": "card",
+              "currency": "USD",
+              "initialBalance": 0,
+              "currentBalance": 0,
+              "isArchived": false,
+              "createdAt": "2026-10-15T09:00:00.000Z"
+            }
+          ],
+          "categories": [
+            {
+              "id": "cat-food",
+              "name": "Продукты",
+              "type": "expense",
+              "icon": "ShoppingCart",
+              "color": "#22c55e",
+              "isDefault": true
+            },
+            {
+              "id": "cat-x",
+              "name": "Своя",
+              "type": "expense",
+              "icon": "ShoppingCart",
+              "color": "#22c55e",
+              "isDefault": false,
+              "isArchived": true,
+              "order": 1,
+              "isExcludedFromNoSpend": true
+            }
+          ],
+          "budgetLimits": [
+            {
+              "id": "2026-11-cat-food",
+              "year": 2026,
+              "month": 11,
+              "categoryId": "cat-food",
+              "plannedAmount": 10
+            }
+          ],
+          "transactions": [
+            {
+              "id": "t1",
+              "date": "2026-11-03",
+              "timestamp": 1000,
+              "type": "expense",
+              "accountId": "acc-kzt",
+              "amount": 1000,
+              "isExcludedFromNoSpend": false,
+              "categoryId": "cat-food",
+              "comment": "привет"
+            },
+            {
+              "id": "t2",
+              "date": "2026-11-03",
+              "timestamp": 1000,
+              "type": "transfer",
+              "accountId": "acc-kzt",
+              "amount": 1000,
+              "isExcludedFromNoSpend": true,
+              "toAccountId": "acc-usd",
+              "toAmount": 2
+            }
+          ],
+          "debts": [
+            {
+              "id": "d1",
+              "name": "Кредит",
+              "totalAmount": 100000,
+              "remainingAmount": 50000,
+              "monthlyPayment": 10000,
+              "dueDay": 15,
+              "createdAt": "2026-10-01T00:00:00.000Z",
+              "isClosed": false,
+              "interestRate": 3
+            }
+          ],
+          "goals": [
+            {
+              "id": "g1",
+              "title": "Отпуск",
+              "targetAmount": 300000,
+              "currentAmount": 100000,
+              "targetDate": "2027-05-01",
+              "icon": "Target",
+              "color": "#22c55e",
+              "isAchieved": false
+            }
+          ],
+          "config": [
+            {
+              "key": "fx_rates",
+              "value": {
+                "rates": {
+                  "USD": 500
+                },
+                "date": "2026-11-05",
+                "source": "nbk"
+              }
+            }
+          ]
+        },
+        "extra": true
+      }
+    },
+    {
+      "fn": "describeBackup",
+      "name": "summary",
+      "args": [
+        {
+          "accounts": [
+            1,
+            2,
+            3
+          ],
+          "transactions": [
+            1
+          ],
+          "debts": [],
+          "goals": [
+            1,
+            2
+          ],
+          "categories": [],
+          "budgetLimits": [],
+          "config": []
+        }
+      ],
+      "expected": "счетов: 3, операций: 1, долгов: 0, целей: 2"
+    }
+  ]
+}

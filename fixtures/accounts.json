@@ -1,0 +1,148 @@
+{
+  "module": "accounts",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "accountFieldErrors",
+      "name": "valid",
+      "args": [
+        {
+          "name": "Kaspi",
+          "type": "card",
+          "currency": "KZT",
+          "initialBalance": -500
+        }
+      ],
+      "expected": {}
+    },
+    {
+      "fn": "accountFieldErrors",
+      "name": "invalid",
+      "args": [
+        {
+          "name": "  ",
+          "type": "card",
+          "currency": "KZT",
+          "initialBalance": null
+        }
+      ],
+      "expected": {
+        "name": "Укажите название счёта",
+        "initialBalance": "Начальный остаток должен быть числом"
+      }
+    },
+    {
+      "fn": "validateAccountInput",
+      "name": "first error",
+      "args": [
+        {
+          "name": "",
+          "type": "cash",
+          "currency": "USD",
+          "initialBalance": 0
+        }
+      ],
+      "expected": "Укажите название счёта"
+    },
+    {
+      "fn": "pickAccount",
+      "name": "selected wins",
+      "args": [
+        [
+          {
+            "id": "a",
+            "isArchived": false
+          },
+          {
+            "id": "b",
+            "isArchived": false
+          }
+        ],
+        "b",
+        "a"
+      ],
+      "expected": {
+        "id": "b",
+        "isArchived": false
+      }
+    },
+    {
+      "fn": "pickAccount",
+      "name": "last used if active",
+      "args": [
+        [
+          {
+            "id": "a",
+            "isArchived": false
+          },
+          {
+            "id": "b",
+            "isArchived": false
+          }
+        ],
+        {
+          "$undefined": true
+        },
+        "b"
+      ],
+      "expected": {
+        "id": "b",
+        "isArchived": false
+      }
+    },
+    {
+      "fn": "pickAccount",
+      "name": "archived last used skipped",
+      "args": [
+        [
+          {
+            "id": "a",
+            "isArchived": true
+          },
+          {
+            "id": "b",
+            "isArchived": false
+          }
+        ],
+        {
+          "$undefined": true
+        },
+        "a"
+      ],
+      "expected": {
+        "id": "b",
+        "isArchived": false
+      }
+    },
+    {
+      "fn": "pickAccount",
+      "name": "all archived → first",
+      "args": [
+        [
+          {
+            "id": "a",
+            "isArchived": true
+          },
+          {
+            "id": "b",
+            "isArchived": true
+          }
+        ]
+      ],
+      "expected": {
+        "id": "a",
+        "isArchived": true
+      }
+    },
+    {
+      "fn": "pickAccount",
+      "name": "empty",
+      "args": [
+        []
+      ],
+      "expected": {
+        "$undefined": true
+      }
+    }
+  ]
+}

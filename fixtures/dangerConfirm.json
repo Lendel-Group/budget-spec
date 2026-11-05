@@ -1,0 +1,42 @@
+{
+  "module": "dangerConfirm",
+  "generatedFrom": "PWA-Budget@8916136 (v1.22.2)",
+  "cases": [
+    {
+      "fn": "isConfirmationWord",
+      "name": "exact",
+      "args": [
+        "СБРОС",
+        "СБРОС"
+      ],
+      "expected": true
+    },
+    {
+      "fn": "isConfirmationWord",
+      "name": "lowercase and spaces",
+      "args": [
+        "  сброс ",
+        "СБРОС"
+      ],
+      "expected": true
+    },
+    {
+      "fn": "isConfirmationWord",
+      "name": "latin lookalike rejected",
+      "args": [
+        "CБPOC",
+        "СБРОС"
+      ],
+      "expected": false
+    },
+    {
+      "fn": "isConfirmationWord",
+      "name": "restore word",
+      "args": [
+        "заменить",
+        "ЗАМЕНИТЬ"
+      ],
+      "expected": true
+    }
+  ]
+}
