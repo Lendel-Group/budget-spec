@@ -2,9 +2,9 @@
 
 | | PWA (web, iOS) | Android (Kotlin) |
 |---|---|---|
-| Репозиторий | `al-writer/PWA-Budget` | отдельный (например, `al-writer/budget-android`) |
+| Репозиторий | `al-writer/PWA-Budget` | `al-writer/android-budget` |
 | Хранилище | IndexedDB (Dexie) | Room (SQLite) или аналог |
-| Распространение | GitHub Pages, установка «на экран Домой» | Google Play |
+| Распространение | GitHub Pages, установка «на экран Домой» | Google Play (пакет `app.lendel.mbt`) |
 | Обновления | Service worker + баннер «Обновить» | Google Play (in-app updates — по желанию) |
 
 ## Что общее (обязательно одинаково)
