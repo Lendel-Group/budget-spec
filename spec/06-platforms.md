@@ -40,6 +40,15 @@
 - Android: «Скачать резервную копию JSON» — `ACTION_CREATE_DOCUMENT`; «Восстановить из файла» — `ACTION_OPEN_DOCUMENT`
   (`application/json`). Формат и проверки — [04](04-backup-format.md).
 
+### Тема
+- PWA: выбор в `localStorage` (`theme`); до отрисовки приложения скрипт в `index.html` ставит на `<html>` атрибут
+  `data-theme` (`light` | `dark`) по выбору или `prefers-color-scheme` и `color-scheme`; при «Как в системе» —
+  подписка на изменение `prefers-color-scheme`. `<meta name="theme-color">` — цвет surface текущей темы.
+- Android: выбор в локальных настройках (SharedPreferences, читаются синхронно до `setContent`); при «Как в системе» —
+  `isSystemInDarkTheme()`. Системные панели — `enableEdgeToEdge` со стилем по теме приложения, а не системы
+  (`SystemBarStyle.dark` / `light` с прозрачным фоном): иначе при светлой системе и тёмной теме приложения значки
+  строки состояния не видны.
+
 ### Дата «сегодня»
 Локальная дата устройства; пересчитывать при возврате в приложение и после полуночи (как `useToday` в PWA).
 
