@@ -1,11 +1,11 @@
-# budget-spec — спецификация приложения My Budget
+# budget-spec — спецификация приложения MBT: My Budget Tracker
 
-Источник правды о **поведении** приложения My Budget для всех платформ:
+Источник правды о **поведении** приложения MBT (My Budget Tracker) для всех платформ:
 
 | Платформа | Репозиторий |
 |---|---|
 | Web / iOS (PWA, эталон) | [al-writer/PWA-Budget](https://github.com/al-writer/PWA-Budget) |
-| Android (Kotlin) | отдельный репозиторий (создаётся) |
+| Android (Kotlin) | [al-writer/android-budget](https://github.com/al-writer/android-budget) |
 
 Задача репозитория: чтобы разные реализации работали **одинаково**: одни и те же расчёты, тексты, экраны
 и один формат данных (резервная копия с одной платформы открывается на другой).
