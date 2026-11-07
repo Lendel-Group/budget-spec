@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/al-writer/budget-spec/schema/backup-v2.schema.json",
+  "$id": "https://github.com/Lendel-Group/budget-spec/schema/backup-v2.schema.json",
   "title": "MBT: My Budget Tracker — резервная копия, schemaVersion 2",
   "description": "Структура файла. Порядок проверок и тексты ошибок — spec/04-backup-format.md и fixtures/backupValidation.json. Лишние поля допускаются.",
   "type": "object",
