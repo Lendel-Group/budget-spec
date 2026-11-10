@@ -131,6 +131,7 @@
 | `fx_rates` | `{ rates: {USD?, EUR?, RUB?}, date: "YYYY-MM-DD", source: "nbk" \| "manual" }` | **да** | Курсы: тенге за 1 единицу валюты. |
 | `last_account_id` | string | нет | Счёт последней добавленной операции. |
 | `onboarding` | `"active"` \| `"dismissed"` | нет | Состояние чек-листа первых шагов. |
+| `welcome` | `"active"` \| `"done"` | нет | Экраны первого запуска ([05](05-screens.md#первый-запуск)): показывать или уже пройдены. |
 | `last_backup_date` | ISO string | нет | Когда последний раз сохранялась копия. |
 | `storage_persisted` | boolean | нет | Только web: статус защиты хранилища. |
 | `auto_backup_handle` | (объект платформы) | нет | Только web: ссылка на файл автобэкапа. |
