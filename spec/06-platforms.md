@@ -107,8 +107,11 @@ service worker (баннер «Обновить», выше), поэтому р�
   а дополняет его.
 
 ### Скачать резервную копию / восстановить
-- Android: «Скачать резервную копию JSON» — `ACTION_CREATE_DOCUMENT`; «Восстановить из файла» — `ACTION_OPEN_DOCUMENT`
-  (`application/json`). Формат и проверки — [04](04-backup-format.md).
+- Android: «Скачать резервную копию JSON» — `ACTION_CREATE_DOCUMENT` (`application/json`); «Восстановить из файла»
+  (в «Настройках» и на экранах первого запуска) — `ACTION_OPEN_DOCUMENT` с типами `application/json`,
+  `application/octet-stream` и `text/plain`: многие провайдеры (загрузки, облачные диски, мессенджеры) помечают `.json`
+  одним из двух последних, и с одним `application/json` файл копии нельзя было бы выбрать. Непригодный файл отклоняет
+  проверка [parseBackup](04-backup-format.md).
 
 ### Тема
 - PWA: выбор в `localStorage` (`theme`); до отрисовки приложения скрипт в `index.html` ставит на `<html>` атрибут
