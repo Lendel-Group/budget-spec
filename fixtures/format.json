@@ -1,6 +1,6 @@
 {
   "module": "format",
-  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
+  "generatedFrom": "PWA-Budget@b2e8fb0 (v1.31.2)",
   "cases": [
     {
       "fn": "formatNumber",
@@ -57,6 +57,36 @@
         10.001
       ],
       "expected": "10,00"
+    },
+    {
+      "fn": "formatNumber",
+      "name": "infinity",
+      "args": [
+        {
+          "$number": "Infinity"
+        }
+      ],
+      "expected": "∞"
+    },
+    {
+      "fn": "formatNumber",
+      "name": "negative infinity",
+      "args": [
+        {
+          "$number": "-Infinity"
+        }
+      ],
+      "expected": "-∞"
+    },
+    {
+      "fn": "formatNumber",
+      "name": "NaN",
+      "args": [
+        {
+          "$number": "NaN"
+        }
+      ],
+      "expected": "не число"
     },
     {
       "fn": "formatMoney",

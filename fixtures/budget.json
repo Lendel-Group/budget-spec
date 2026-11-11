@@ -1,6 +1,6 @@
 {
   "module": "budget",
-  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
+  "generatedFrom": "PWA-Budget@b2e8fb0 (v1.31.2)",
   "cases": [
     {
       "fn": "monthLabel",
@@ -168,6 +168,22 @@
         " 150 000,555 "
       ],
       "expected": 150000.56
+    },
+    {
+      "fn": "parsePlanInput",
+      "name": "at max",
+      "args": [
+        "9 999 999 999,99"
+      ],
+      "expected": 9999999999.99
+    },
+    {
+      "fn": "parsePlanInput",
+      "name": "above max",
+      "args": [
+        "10 000 000 000"
+      ],
+      "expected": null
     },
     {
       "fn": "parsePlanInput",

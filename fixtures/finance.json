@@ -1,6 +1,6 @@
 {
   "module": "finance",
-  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
+  "generatedFrom": "PWA-Budget@b2e8fb0 (v1.31.2)",
   "cases": [
     {
       "fn": "round2",
@@ -875,6 +875,58 @@
       ],
       "expected": {
         "$error": "Сумма должна быть больше нуля"
+      }
+    },
+    {
+      "fn": "validateNewTransaction",
+      "name": "amount at max",
+      "args": [
+        {
+          "date": "2026-11-03",
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 9999999999.99,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-food"
+        }
+      ],
+      "expected": {
+        "$undefined": true
+      }
+    },
+    {
+      "fn": "validateNewTransaction",
+      "name": "amount above max",
+      "args": [
+        {
+          "date": "2026-11-03",
+          "type": "expense",
+          "accountId": "acc-kzt",
+          "amount": 10000000000,
+          "isExcludedFromNoSpend": false,
+          "categoryId": "cat-food"
+        }
+      ],
+      "expected": {
+        "$error": "Слишком большая сумма"
+      }
+    },
+    {
+      "fn": "validateNewTransaction",
+      "name": "transfer toAmount above max",
+      "args": [
+        {
+          "date": "2026-11-03",
+          "type": "transfer",
+          "accountId": "acc-kzt",
+          "amount": 100,
+          "isExcludedFromNoSpend": false,
+          "toAccountId": "acc-usd",
+          "toAmount": 100000000000
+        }
+      ],
+      "expected": {
+        "$error": "Слишком большая сумма"
       }
     },
     {

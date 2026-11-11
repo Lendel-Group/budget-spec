@@ -1,6 +1,6 @@
 {
   "module": "planning",
-  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
+  "generatedFrom": "PWA-Budget@b2e8fb0 (v1.31.2)",
   "cases": [
     {
       "fn": "daysBetween",
@@ -337,6 +337,38 @@
       }
     },
     {
+      "fn": "debtFieldErrors",
+      "name": "amounts above max",
+      "args": [
+        {
+          "name": "A",
+          "totalAmount": 10000000000,
+          "remainingAmount": 10000000000,
+          "monthlyPayment": 10000000000,
+          "dueDay": 5
+        }
+      ],
+      "expected": {
+        "totalAmount": "Слишком большая сумма",
+        "remainingAmount": "Слишком большая сумма",
+        "monthlyPayment": "Слишком большая сумма"
+      }
+    },
+    {
+      "fn": "debtFieldErrors",
+      "name": "amounts at max",
+      "args": [
+        {
+          "name": "A",
+          "totalAmount": 9999999999.99,
+          "remainingAmount": 9999999999.99,
+          "monthlyPayment": 9999999999.99,
+          "dueDay": 5
+        }
+      ],
+      "expected": {}
+    },
+    {
       "fn": "validateDebtInput",
       "name": "first error",
       "args": [
@@ -429,6 +461,21 @@
       }
     },
     {
+      "fn": "goalFieldErrors",
+      "name": "target above max",
+      "args": [
+        {
+          "title": "A",
+          "targetAmount": 10000000000,
+          "targetDate": "2026-11-05"
+        },
+        "2026-11-05"
+      ],
+      "expected": {
+        "targetAmount": "Слишком большая сумма"
+      }
+    },
+    {
       "fn": "validateGoalInput",
       "name": "first error",
       "args": [
@@ -498,6 +545,24 @@
         }
       ],
       "expected": "Сумма должна быть больше нуля"
+    },
+    {
+      "fn": "amountFieldError",
+      "name": "above MAX_AMOUNT",
+      "args": [
+        10000000000
+      ],
+      "expected": "Слишком большая сумма"
+    },
+    {
+      "fn": "amountFieldError",
+      "name": "at MAX_AMOUNT",
+      "args": [
+        9999999999.99
+      ],
+      "expected": {
+        "$undefined": true
+      }
     },
     {
       "fn": "getFirstTrackedDate",

@@ -1,6 +1,6 @@
 {
   "module": "onboarding",
-  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
+  "generatedFrom": "PWA-Budget@b2e8fb0 (v1.31.2)",
   "cases": [
     {
       "fn": "onboardingSteps",
