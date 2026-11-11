@@ -1,6 +1,6 @@
 {
   "module": "planning",
-  "generatedFrom": "PWA-Budget@ba4997e (v1.23.0)",
+  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
   "cases": [
     {
       "fn": "daysBetween",
@@ -291,6 +291,52 @@
       }
     },
     {
+      "fn": "debtFieldErrors",
+      "name": "infinite amounts",
+      "args": [
+        {
+          "name": "A",
+          "totalAmount": {
+            "$number": "Infinity"
+          },
+          "remainingAmount": {
+            "$number": "Infinity"
+          },
+          "monthlyPayment": {
+            "$number": "Infinity"
+          },
+          "dueDay": 5,
+          "interestRate": {
+            "$number": "Infinity"
+          }
+        }
+      ],
+      "expected": {
+        "totalAmount": "Сумма долга должна быть больше нуля",
+        "remainingAmount": "Остаток должен быть больше нуля и не больше суммы долга",
+        "monthlyPayment": "Укажите обязательный платёж",
+        "interestRate": "Ставка не может быть отрицательной"
+      }
+    },
+    {
+      "fn": "debtFieldErrors",
+      "name": "infinite total, finite remaining",
+      "args": [
+        {
+          "name": "A",
+          "totalAmount": {
+            "$number": "Infinity"
+          },
+          "remainingAmount": 100,
+          "monthlyPayment": 10,
+          "dueDay": 5
+        }
+      ],
+      "expected": {
+        "totalAmount": "Сумма долга должна быть больше нуля"
+      }
+    },
+    {
       "fn": "validateDebtInput",
       "name": "first error",
       "args": [
@@ -366,6 +412,23 @@
       }
     },
     {
+      "fn": "goalFieldErrors",
+      "name": "infinite target",
+      "args": [
+        {
+          "title": "A",
+          "targetAmount": {
+            "$number": "Infinity"
+          },
+          "targetDate": "2026-11-05"
+        },
+        "2026-11-05"
+      ],
+      "expected": {
+        "targetAmount": "Целевая сумма должна быть больше нуля"
+      }
+    },
+    {
       "fn": "validateGoalInput",
       "name": "first error",
       "args": [
@@ -415,6 +478,26 @@
       "expected": {
         "$undefined": true
       }
+    },
+    {
+      "fn": "amountFieldError",
+      "name": "infinite",
+      "args": [
+        {
+          "$number": "Infinity"
+        }
+      ],
+      "expected": "Сумма должна быть больше нуля"
+    },
+    {
+      "fn": "amountFieldError",
+      "name": "negative infinite",
+      "args": [
+        {
+          "$number": "-Infinity"
+        }
+      ],
+      "expected": "Сумма должна быть больше нуля"
     },
     {
       "fn": "getFirstTrackedDate",
