@@ -1,6 +1,6 @@
 {
   "module": "dangerConfirm",
-  "generatedFrom": "PWA-Budget@b2e8fb0 (v1.31.2)",
+  "generatedFrom": "PWA-Budget@711603a (v1.31.2)",
   "cases": [
     {
       "fn": "isConfirmationWord",
