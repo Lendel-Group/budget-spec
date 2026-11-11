@@ -15,6 +15,8 @@ export interface Case {
 
 const U = { $undefined: true }
 const set = (...items: string[]) => ({ $set: items })
+/** Бесконечность в аргументах: в JSON её нет (fixtures/README.md). */
+const INF = { $number: 'Infinity' }
 
 /* ---------- Сущности ---------- */
 
@@ -297,16 +299,22 @@ export const CASES: Record<string, Case[]> = {
     { fn: 'debtFieldErrors', name: 'remaining above total', args: [{ name: 'A', totalAmount: 100, remainingAmount: 101, monthlyPayment: 10, dueDay: 5 }] },
     { fn: 'debtFieldErrors', name: 'fractional due day', args: [{ name: 'A', totalAmount: 100, remainingAmount: 100, monthlyPayment: 10, dueDay: 5.5, interestRate: 0 }] },
     { fn: 'debtFieldErrors', name: 'NaN amounts', args: [{ name: 'A', totalAmount: null, remainingAmount: null, monthlyPayment: null, dueDay: 32 }] },
+    // Infinity не проходит через JSON — передаётся как { $number } (fixtures/README.md)
+    { fn: 'debtFieldErrors', name: 'infinite amounts', args: [{ name: 'A', totalAmount: INF, remainingAmount: INF, monthlyPayment: INF, dueDay: 5, interestRate: INF }] },
+    { fn: 'debtFieldErrors', name: 'infinite total, finite remaining', args: [{ name: 'A', totalAmount: INF, remainingAmount: 100, monthlyPayment: 10, dueDay: 5 }] },
     { fn: 'validateDebtInput', name: 'first error', args: [{ name: 'A', totalAmount: 0, remainingAmount: 0, monthlyPayment: 0, dueDay: 0 }] },
     { fn: 'validateDebtInput', name: 'ok', args: [{ name: 'A', totalAmount: 1, remainingAmount: 1, monthlyPayment: 1, dueDay: 1 }] },
     { fn: 'goalFieldErrors', name: 'valid', args: [{ title: 'Отпуск', targetAmount: 1, targetDate: '2026-11-05' }, '2026-11-05'] },
     { fn: 'goalFieldErrors', name: 'all invalid', args: [{ title: '', targetAmount: 0, targetDate: '' }, '2026-11-05'] },
     { fn: 'goalFieldErrors', name: 'date in past', args: [{ title: 'A', targetAmount: 1, targetDate: '2026-11-04' }, '2026-11-05'] },
+    { fn: 'goalFieldErrors', name: 'infinite target', args: [{ title: 'A', targetAmount: INF, targetDate: '2026-11-05' }, '2026-11-05'] },
     { fn: 'validateGoalInput', name: 'first error', args: [{ title: 'A', targetAmount: -1, targetDate: '2020-01-01' }, '2026-11-05'] },
     { fn: 'amountFieldError', name: 'ok', args: [100] },
     { fn: 'amountFieldError', name: 'zero', args: [0] },
     { fn: 'amountFieldError', name: 'above max', args: [101, 100] },
     { fn: 'amountFieldError', name: 'equals max', args: [100, 100] },
+    { fn: 'amountFieldError', name: 'infinite', args: [INF] },
+    { fn: 'amountFieldError', name: 'negative infinite', args: [{ $number: '-Infinity' }] },
     {
       fn: 'getFirstTrackedDate', name: 'account created earlier',
       args: [[account({ createdAt: '2026-10-15T23:30:00.000Z' })], [tx({ date: '2026-11-01' })], '2026-11-05'],

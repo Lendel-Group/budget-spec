@@ -37,13 +37,14 @@ const MODULES: Record<string, Record<string, unknown>> = {
 const FIXTURES_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'fixtures')
 const GENERATE = process.env.GENERATE === '1'
 
-/** JSON → значения JS: { $set } → Set, { $undefined } → undefined. */
+/** JSON → значения JS: { $set } → Set, { $undefined } → undefined, { $number: 'Infinity' } → Infinity. */
 function decode(v: unknown): unknown {
   if (Array.isArray(v)) return v.map(decode)
   if (v && typeof v === 'object') {
     const o = v as Record<string, unknown>
     if ('$set' in o) return new Set(o.$set as unknown[])
     if ('$undefined' in o) return undefined
+    if ('$number' in o) return Number(o.$number)
     return Object.fromEntries(Object.entries(o).map(([k, x]) => [k, decode(x)]))
   }
   return v
