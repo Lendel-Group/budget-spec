@@ -1,6 +1,6 @@
 {
   "module": "analytics",
-  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
+  "generatedFrom": "PWA-Budget@711603a (v1.31.2)",
   "cases": [
     {
       "fn": "calculateYearSummary",

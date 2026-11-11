@@ -1,6 +1,6 @@
 {
   "module": "numpad",
-  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
+  "generatedFrom": "PWA-Budget@711603a (v1.31.2)",
   "cases": [
     {
       "fn": "applyNumpadKey",
@@ -10,6 +10,60 @@
         "5"
       ],
       "expected": "5"
+    },
+    {
+      "fn": "applyAmountInput",
+      "name": "comma and spaces",
+      "args": [
+        "",
+        "1 234,5"
+      ],
+      "expected": "1234.5"
+    },
+    {
+      "fn": "applyAmountInput",
+      "name": "third decimal ignored",
+      "args": [
+        "1234.56",
+        "1234.567"
+      ],
+      "expected": "1234.56"
+    },
+    {
+      "fn": "applyAmountInput",
+      "name": "eleventh integer digit ignored",
+      "args": [
+        "9999999999",
+        "99999999999"
+      ],
+      "expected": "9999999999"
+    },
+    {
+      "fn": "applyAmountInput",
+      "name": "second dot ignored",
+      "args": [
+        "1.2",
+        "1.2.3"
+      ],
+      "expected": "1.2"
+    },
+    {
+      "fn": "applyAmountInput",
+      "name": "letters dropped",
+      "args": [
+        "",
+        "12abc"
+      ],
+      "expected": "12"
+    },
+    {
+      "fn": "applyAmountInput",
+      "name": "cleared",
+      "args": [
+        "5",
+        ""
+      ],
+      "expected": ""
     },
     {
       "fn": "applyNumpadKey",

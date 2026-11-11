@@ -1,6 +1,6 @@
 {
   "module": "accounts",
-  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
+  "generatedFrom": "PWA-Budget@711603a (v1.31.2)",
   "cases": [
     {
       "fn": "accountFieldErrors",
@@ -28,6 +28,53 @@
       ],
       "expected": {
         "name": "Укажите название счёта",
+        "initialBalance": "Начальный остаток должен быть числом"
+      }
+    },
+    {
+      "fn": "accountFieldErrors",
+      "name": "balance above max",
+      "args": [
+        {
+          "name": "A",
+          "type": "card",
+          "currency": "KZT",
+          "initialBalance": 10000000000
+        }
+      ],
+      "expected": {
+        "initialBalance": "Слишком большая сумма"
+      }
+    },
+    {
+      "fn": "accountFieldErrors",
+      "name": "negative balance above max",
+      "args": [
+        {
+          "name": "A",
+          "type": "card",
+          "currency": "KZT",
+          "initialBalance": -10000000000
+        }
+      ],
+      "expected": {
+        "initialBalance": "Слишком большая сумма"
+      }
+    },
+    {
+      "fn": "accountFieldErrors",
+      "name": "infinite balance",
+      "args": [
+        {
+          "name": "A",
+          "type": "card",
+          "currency": "KZT",
+          "initialBalance": {
+            "$number": "Infinity"
+          }
+        }
+      ],
+      "expected": {
         "initialBalance": "Начальный остаток должен быть числом"
       }
     },

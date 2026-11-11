@@ -1,6 +1,6 @@
 {
   "module": "rates",
-  "generatedFrom": "PWA-Budget@7b6e067 (v1.31.1)",
+  "generatedFrom": "PWA-Budget@711603a (v1.31.2)",
   "cases": [
     {
       "fn": "parseRatesFile",
@@ -42,6 +42,27 @@
         "date": "2026-11-05",
         "rates": {
           "USD": 503.12
+        }
+      }
+    },
+    {
+      "fn": "parseRatesFile",
+      "name": "rate above max dropped",
+      "args": [
+        {
+          "date": "2026-11-05",
+          "rates": {
+            "USD": 503.12,
+            "EUR": 1000001,
+            "RUB": 1000000
+          }
+        }
+      ],
+      "expected": {
+        "date": "2026-11-05",
+        "rates": {
+          "USD": 503.12,
+          "RUB": 1000000
         }
       }
     },
